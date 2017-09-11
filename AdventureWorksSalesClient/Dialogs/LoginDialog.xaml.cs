@@ -16,7 +16,8 @@ namespace AdventureWorksSalesClient.Dialogs
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        
+
+        private bool isDebugged; // to be set by the "Login" Debugging Check
         private readonly Clients clients;
 
         /// <summary> The handshake token for a login in progress. </summary>
