@@ -170,7 +170,7 @@ namespace AdventureWorksSalesClient.Dialogs
             var startTime = DateTimeOffset.Now;
 
             clients.BeginSession(authToken);
-            var customerWindow = new Windows.CustomerWindow(clients);
+            var customerWindow = new Windows.CustomerWindow(clients, isDebugged);
 
             Hide();
 

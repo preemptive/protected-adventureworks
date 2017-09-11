@@ -27,6 +27,8 @@ namespace AdventureWorksSalesClient.Windows
         private readonly Clients clients;
         private readonly CollectionViewSource collectionViewSource;
 
+        private readonly bool isDebugged;
+
         private bool isClosing = false;
         private Filter filter = new Filter();
 
@@ -119,11 +121,12 @@ namespace AdventureWorksSalesClient.Windows
         private Person CurrentRow => (Person) collectionViewSource.View.CurrentItem;
         
         /// <summary> Creates the customer window. </summary>
-        public CustomerWindow(Clients clients)
+        public CustomerWindow(Clients clients, bool isDebugged)
         {
             InitializeComponent();
 
             this.clients = clients;
+            this.isDebugged = isDebugged;
             collectionViewSource = (CollectionViewSource) FindResource("CustomerDataViewSource");
         }
 
