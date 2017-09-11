@@ -1,0 +1,52 @@
+﻿<Window x:Class="AdventureWorksSalesClient.Dialogs.AddEmailWindow"
+        
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AdventureWorksSalesClient"
+        mc:Ignorable="d"
+        
+        Title="Adventure Works Sales | Add Email" 
+        Style="{StaticResource DialogWindowStyle}"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        FocusManager.FocusedElement="{Binding ElementName=EmailTextbox}">
+    <Window.Resources>
+        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource DialogLabelStyle}" />
+        <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextBlockStyle}" />
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource DialogButtonStyle}" />
+        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource DialogTextBoxStyle}" />
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" 
+                   Text="{Binding CustomerDescription,StringFormat='Create a new email record for {0}'}"/>
+        
+        <Label Grid.Row="1" Grid.Column="0">
+            Email Address:
+        </Label>
+        <TextBox x:Name="EmailTextbox" 
+                 Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" 
+                 Text="{Binding Email,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Button Grid.Row="2" Grid.Column="1" 
+                IsDefault="True" 
+                Click="OKButton_OnClick">
+            OK
+        </Button>
+        <Button Grid.Row="2" Grid.Column="2" 
+                IsCancel="True">
+            Cancel
+        </Button>
+    </Grid>
+</Window>

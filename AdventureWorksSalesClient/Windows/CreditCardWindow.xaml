@@ -1,0 +1,102 @@
+﻿<Window x:Class="AdventureWorksSalesClient.Windows.CreditCardWindow"
+        
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:salesServiceReference="clr-namespace:AdventureWorksSalesClient.SalesServiceReference" 
+        mc:Ignorable="d"
+        
+        Title="Adventure Works Sales | Customer Credit Card Information" 
+        Style="{StaticResource SubinformationWindowStyle}"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Loaded="OnLoaded" Closing="OnClosing">
+    <Window.Resources>
+        <CollectionViewSource x:Key="CreditCardDataViewSource" 
+                              d:DesignSource="{d:DesignInstance {x:Type salesServiceReference:CreditCard}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Style="{StaticResource RibbonStyle}">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource RibbonButtonStyle}" />
+                <Style TargetType="{x:Type Line}" BasedOn="{StaticResource RibbonSeparatorStyle}" />
+            </StackPanel.Resources>
+
+            <Button Click="AssociateButton_OnClick">
+                _Associate Card...
+            </Button>
+            <Line />
+
+            <Button IsEnabled="{Binding ChangesPending}"
+                    Click="SaveButton_OnClick">
+                _Save changes
+            </Button>
+            <Button IsEnabled="{Binding ChangesPending}"
+                    Click="RevertButton_OnClick">
+                _Revert changes
+            </Button>
+            <Line/>
+
+            <StackPanel Width="460" >
+                <Label Style="{StaticResource CompanyNameLabelStyle}"/>
+                <Label Style="{StaticResource WindowNameLabelStyle}">
+                    Credit Card Information
+                </Label>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Top">
+            <Border Style="{StaticResource CustomerStackPanelBorderStyle}" />
+            <Label Content="{Binding CustomerDescription}"/>
+        </StackPanel>
+
+        <DataGrid Grid.Row="2" 
+                  Style="{StaticResource DataGridStyle}"
+                  ItemsSource="{Binding Source={StaticResource CreditCardDataViewSource}}" 
+                  CellEditEnding="OnCellEditEnding">
+            <DataGrid.Columns>
+
+                <DataGridTemplateColumn Header="Card ID" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Style="{StaticResource ReadOnlyTextBoxStyle}" 
+                                     Text="{Binding CreditCardID}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="Card Number" Width="4*"
+                                    EditingElementStyle="{StaticResource CardNumberTextBoxStyle}"
+                                    Binding="{Binding CardNumber}" />
+                <DataGridTextColumn Header="Brand" Width="2*"
+                                    EditingElementStyle="{StaticResource CardTypeTextBoxStyle}"
+                                    Binding="{Binding CardType}" />
+                <DataGridTextColumn Header="Exp. Month" Width="*"
+                                    EditingElementStyle="{StaticResource MonthNumberTextBoxStyle}"
+                                    Binding="{Binding ExpMonth}" />
+                <DataGridTextColumn Header="Exp. Year" Width="*"
+                                    EditingElementStyle="{StaticResource YearNumberTextBoxStyle}"
+                                    Binding="{Binding ExpYear}" />
+
+                <DataGridTemplateColumn Header="Disassociate" Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Style="{StaticResource DeleteButtonStyle}" 
+                                    Tag="{Binding CreditCardID}" 
+                                    Click="DisassociateButton_OnClick">
+                                Disassociate
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

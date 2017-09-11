@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="71a70bae-2ae1-4834-ae9b-e5334337de4e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/Sales/CustomerManagement.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CustomerManagement.xsd" MetadataType="Schema" ID="df83d4af-48af-4bcd-ab09-6c5f4d313f80" SourceId="1" SourceUrl="http://localhost/Sales/CustomerManagement.svc?xsd=xsd2" />
+    <MetadataFile FileName="CustomerManagement.wsdl" MetadataType="Wsdl" ID="15e959c3-9a4e-42ea-91fe-0cc8eba03dc8" SourceId="1" SourceUrl="http://localhost/Sales/CustomerManagement.svc?wsdl" />
+    <MetadataFile FileName="CustomerManagement1.xsd" MetadataType="Schema" ID="c38ea34a-a2b3-4462-9677-4e47854fe6b8" SourceId="1" SourceUrl="http://localhost/Sales/CustomerManagement.svc?xsd=xsd1" />
+    <MetadataFile FileName="CustomerManagement2.xsd" MetadataType="Schema" ID="2a443723-e356-45e8-b43e-1eae266fbbd2" SourceId="1" SourceUrl="http://localhost/Sales/CustomerManagement.svc?xsd=xsd0" />
+    <MetadataFile FileName="CustomerManagement.disco" MetadataType="Disco" ID="5b4a5579-0528-4436-a5a6-0969a32cb9c1" SourceId="1" SourceUrl="http://localhost/Sales/CustomerManagement.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

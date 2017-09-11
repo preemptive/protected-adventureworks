@@ -1,0 +1,157 @@
+﻿<Application x:Class="AdventureWorksSalesClient.App"
+             
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             
+             StartupUri="Dialogs/LoginDialog.xaml"
+             Startup="OnStartup">
+    <Application.Resources>
+        <!-- Window Styles -->
+        <Style x:Key="DialogWindowStyle" TargetType="{x:Type Window}">
+            <Setter Property="Width" Value="460"/>
+            <Setter Property="Height" Value="400"/>
+            <Setter Property="ShowInTaskbar" Value="True" />
+        </Style>
+        <Style x:Key="SubinformationWindowStyle" TargetType="{x:Type Window}">
+            <Setter Property="Width" Value="860"/>
+            <Setter Property="Height" Value="300"/>
+            <Setter Property="ShowInTaskbar" Value="True" />
+        </Style>
+        
+        <!-- Styles for ribbon elements -->
+        <Style x:Key="CompanyNameLabelStyle" TargetType="{x:Type Label}">
+            <Setter Property="Content" Value="Adventure Works Sales" />
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="WindowNameLabelStyle" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="26"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="RibbonButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="10,20,10,20"/>
+            <Setter Property="Width" Value="110"/>
+        </Style>
+        <Style x:Key="RibbonStyle" TargetType="{x:Type StackPanel}">
+            <Setter Property="Orientation" Value="Horizontal" />
+        </Style>
+        <Style x:Key="RibbonSeparatorStyle" TargetType="{x:Type Line}">
+            <Setter Property="Stroke" Value="Black" />
+            <Setter Property="Y2" Value="75" />
+            <Setter Property="StrokeThickness" Value="2" />
+        </Style>
+        <Style x:Key="CustomerStackPanelBorderStyle" TargetType="{x:Type Border}">
+            <Setter Property="DockPanel.Dock" Value="Top" />
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+
+        <!-- Styles for dialog box elements -->
+        <Style x:Key="DialogButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
+        </Style>
+        <Style x:Key="DialogComboBoxStyle" TargetType="{x:Type ComboBox}">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,0,5,0"/>
+        </Style>
+        <Style x:Key="DialogLabelStyle" TargetType="{x:Type Label}">
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="DialogTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,0,5,0"/>
+        </Style>
+        <Style x:Key="DialogNameTextBoxStyle" TargetType="{x:Type TextBox}" BasedOn="{StaticResource DialogTextBoxStyle}">
+            <Setter Property="MaxLength" Value="50"/>
+        </Style>
+        <Style x:Key="DialogPasswordBoxStyle" TargetType="{x:Type PasswordBox}">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,0,5,0"/>
+        </Style>
+        <Style x:Key="DialogCardNumberTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="MaxLength" Value="16"/>
+        </Style>
+        <Style x:Key="DialogCardTypeTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="MaxLength" Value="50"/>
+        </Style>
+        <Style x:Key="DialogMonthNumberTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Width" Value="30" />
+            <Setter Property="MaxLength" Value="2"/>
+        </Style>
+        <Style x:Key="DialogYearNumberTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Width" Value="60" />
+            <Setter Property="MaxLength" Value="4"/>
+        </Style>
+        <Style x:Key="TextBlockStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10,0,10,0"/>
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="FontSize" Value="14"></Setter>
+        </Style>
+        
+        <!-- Styles for Data Grid elements -->
+        <Style x:Key="ReadOnlyTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="IsReadOnly" Value="True" />
+            <Setter Property="Background" Value="DimGray" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="ToolTip" Value="This cell is read-only" />
+        </Style>
+        <Style x:Key="DataGridStyle" TargetType="{x:Type DataGrid}">
+            <Setter Property="AutoGenerateColumns" Value="False" />
+            <Setter Property="SelectionMode" Value="Single" />
+            <Setter Property="CanUserAddRows" Value="False" />
+            <Setter Property="CanUserDeleteRows" Value="False" />
+            <Setter Property="CanUserSortColumns" Value="False" />
+            <Setter Property="CanUserReorderColumns" Value="False" />
+            <Setter Property="CanUserResizeColumns" Value="False" />
+            <Setter Property="CanUserResizeRows" Value="False" />
+            <Setter Property="RowDetailsVisibilityMode" Value="Collapsed" />
+        </Style>
+        <Style x:Key="NameTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="MaxLength" Value="50"/>
+        </Style>
+        <Style x:Key="TitleTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="MaxLength" Value="8"/>
+        </Style>
+        <Style x:Key="SuffixTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="MaxLength" Value="10"/>
+        </Style>
+        <Style x:Key="EmailTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="MaxLength" Value="50"/>
+        </Style>
+        <Style x:Key="CardNumberTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="MaxLength" Value="16"/>
+        </Style>
+        <Style x:Key="CardTypeTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="MaxLength" Value="50"/>
+        </Style>
+        <Style x:Key="MonthNumberTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="MaxLength" Value="2"/>
+        </Style>
+        <Style x:Key="YearNumberTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="MaxLength" Value="4"/>
+        </Style>
+        <Style x:Key="ComboBoxStyle" TargetType="{x:Type ComboBox}">
+            <Setter Property="IsEditable" Value="False" />
+        </Style>
+        <Style x:Key="ButtonStyle" TargetType="{x:Type Button}" />
+        <Style x:Key="DeleteButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
+            <Setter Property="Background" Value="LightCoral" />
+        </Style>
+    </Application.Resources>
+</Application>

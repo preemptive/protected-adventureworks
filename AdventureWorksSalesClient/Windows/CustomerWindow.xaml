@@ -1,0 +1,189 @@
+﻿<Window x:Class="AdventureWorksSalesClient.Windows.CustomerWindow"
+        
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:salesServiceReference="clr-namespace:AdventureWorksSalesClient.SalesServiceReference"
+        mc:Ignorable="d"
+        
+        Title="Adventure Works Sales | Customer Information" 
+        Width="1400" Height="800" 
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        FocusManager.FocusedElement="{Binding ElementName=CurrentPageBox}"
+        Loaded="OnLoaded" Closing="OnClosing">
+    <Window.Resources>
+        <CollectionViewSource x:Key="CustomerDataViewSource" 
+                              d:DesignSource="{d:DesignInstance {x:Type salesServiceReference:Person}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Style="{StaticResource RibbonStyle}">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource RibbonButtonStyle}" />
+                <Style TargetType="{x:Type Line}" BasedOn="{StaticResource RibbonSeparatorStyle}" />
+            </StackPanel.Resources>
+
+            <Button Width="75" 
+                    IsEnabled="{Binding PrevPageButtonActive}"
+                    Click="PrevPageButton_OnClick">
+                &lt; _Prev Page
+            </Button>
+            <StackPanel>
+                <Label HorizontalAlignment="Center">
+                    Page #
+                </Label>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="CurrentPageBox"
+                             VerticalAlignment="Center" MinWidth="30" 
+                             KeyDown="CurrentPageBox_OnKeyDown"
+                             Text="{Binding CurrentPage,Mode=TwoWay,UpdateSourceTrigger=LostFocus}" />
+                    <Label VerticalAlignment="Center">
+                        of
+                    </Label>
+                    <TextBox VerticalAlignment="Center" MinWidth="30" 
+                             Style="{StaticResource ReadOnlyTextBoxStyle}"
+                             Text="{Binding TotalPages,Mode=OneWay}"/>
+                </StackPanel>
+            </StackPanel>
+            <Button Width="75" 
+                    IsEnabled="{Binding NextPageButtonActive}"
+                    Click="NextPageButton_OnClick">
+                _Next Page &gt;
+            </Button>
+            <Line />
+            
+            <Button Click="FilterButton_OnClick">
+                _Filter...
+            </Button>
+            <Button IsEnabled="{Binding ClearFilterButtonActive}"
+                    Click="ClearFilterButton_OnClick">
+                _Clear Filter
+            </Button>
+            <Line />
+
+            <Button Click="AddCustomerButton_OnClick">
+                _Add Customer...
+            </Button>
+            <Line />
+
+            <Button IsEnabled="{Binding ChangesPending}"
+                    Click="SaveButton_OnClick">
+                _Save changes
+            </Button>
+            <Button IsEnabled="{Binding ChangesPending}"
+                    Click="RevertButton_OnClick">
+                _Revert changes
+            </Button>
+            <Line/>
+            
+            <StackPanel Width="460" >
+                <Label Style="{StaticResource CompanyNameLabelStyle}"/>
+                <Label Style="{StaticResource WindowNameLabelStyle}">
+                    Customer Information
+                </Label>
+            </StackPanel>
+        </StackPanel>
+
+        <DataGrid x:Name="DataGrid" 
+                  Grid.Row="1" 
+                  Style="{StaticResource DataGridStyle}"
+                  ItemsSource="{Binding Source={StaticResource CustomerDataViewSource}}"  
+                  CellEditEnding="OnCellEditEnding">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource ComboBoxStyle}" />
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}" />
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                
+                <DataGridTemplateColumn Header="ID" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Style="{StaticResource ReadOnlyTextBoxStyle}"
+                                     Text="{Binding BusinessEntityID}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="Last Name" Width="4*"
+                                    EditingElementStyle="{StaticResource NameTextBoxStyle}" 
+                                    Binding="{Binding LastName}" />
+                <DataGridTextColumn Header="First Name" Width="4*" 
+                                    EditingElementStyle="{StaticResource NameTextBoxStyle}"
+                                    Binding="{Binding FirstName}" />
+                <DataGridTextColumn Header="M.I." Width="*" 
+                                    EditingElementStyle="{StaticResource NameTextBoxStyle}"
+                                    Binding="{Binding MiddleName}" />
+                <DataGridTextColumn Header="Title" Width="*" 
+                                    EditingElementStyle="{StaticResource TitleTextBoxStyle}"
+                                    Binding="{Binding Title, TargetNullValue=''}" />
+                <DataGridTextColumn Header="Suffix" Width="*"  
+                                    EditingElementStyle="{StaticResource SuffixTextBoxStyle}"
+                                    Binding="{Binding Suffix, TargetNullValue=''}" />
+
+                <DataGridTemplateColumn Header="Email Promotions" Width="2.5*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox SelectedIndex="{Binding EmailPromotion}"
+                                      DropDownClosed="EmailPreference_OnDropDownClosed">
+                                <ComboBoxItem>None</ComboBoxItem>
+                                <ComboBoxItem>AW only</ComboBoxItem>
+                                <ComboBoxItem>AW &amp; Partners</ComboBoxItem>
+                            </ComboBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+                <DataGridTemplateColumn Header="Email" Width="3*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Tag="{Binding BusinessEntityID}" 
+                                    Click="EmailButton_OnClick">
+                                Edit Email Addresses...
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Phone" Width="3*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Tag="{Binding BusinessEntityID}" 
+                                    Click="PhoneButton_OnClick">
+                                Edit Phone Numbers...
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+                <DataGridTemplateColumn Header="Credit Card" Width="3*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Tag="{Binding BusinessEntityID}" 
+                                    Click="CreditCardButton_OnClick">
+                                Edit Credit Cards...
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Delete" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Style="{StaticResource DeleteButtonStyle}"
+                                    Tag="{Binding BusinessEntityID}" 
+                                    Click="DeleteButton_OnClick">
+                                Delete...
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/Sales/CustomerManagement.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AdventureWorksSalesService" />
+  <xs:element name="CreateCustomer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/AdventureWorksSalesService" minOccurs="0" name="toCreate" nillable="true" type="q1:CustomerInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateCustomerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateCustomerResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveCustomer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="businessEntityId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveCustomerResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateEmailAndAssociateWithCustomer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="businessEntityId" type="xs:int" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AdventureWorksSalesService" minOccurs="0" name="toCreate" nillable="true" type="q2:EmailInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateEmailAndAssociateWithCustomerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateEmailAndAssociateWithCustomerResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveEmail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="emailAddressId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveEmailResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreatePhoneAndAssociateWithCustomer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="businessEntityId" type="xs:int" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/AdventureWorksSalesService" minOccurs="0" name="toCreate" nillable="true" type="q3:PhoneInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreatePhoneAndAssociateWithCustomerResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReplacePhone">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="businessEntityId" type="xs:int" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/AdventureWorksSalesService" minOccurs="0" name="oldPhone" nillable="true" type="q4:PhoneInfo" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/AdventureWorksSalesService" minOccurs="0" name="newPhone" nillable="true" type="q5:PhoneInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReplacePhoneResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemovePhone">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="businessEntityId" type="xs:int" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/AdventureWorksSalesService" minOccurs="0" name="toDelete" nillable="true" type="q6:PhoneInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemovePhoneResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateCreditCardAndAssociateWithCustomer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="businessEntityId" type="xs:int" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/AdventureWorksSalesService" minOccurs="0" name="toCreate" nillable="true" type="q7:CreditCardInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateCreditCardAndAssociateWithCustomerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateCreditCardAndAssociateWithCustomerResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AssociateCreditCardWithCustomer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="businessEntityId" type="xs:int" />
+        <xs:element minOccurs="0" name="creditCardId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AssociateCreditCardWithCustomerResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DisassociateCreditCardFromCustomer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="businessEntityId" type="xs:int" />
+        <xs:element minOccurs="0" name="creditCardId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DisassociateCreditCardFromCustomerResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveCreditCard">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="creditCardId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveCreditCardResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

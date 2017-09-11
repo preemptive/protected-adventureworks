@@ -1,0 +1,74 @@
+﻿<Window x:Class="AdventureWorksSalesClient.Dialogs.FilterDialog"
+        
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        
+        Title="Adventure Works Sales | Filter Customers"
+        Style="{StaticResource DialogWindowStyle}"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        FocusManager.FocusedElement="{Binding ElementName=LastNameValueTextbox}">
+    <Window.Resources>
+        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource DialogLabelStyle}" />
+        <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextBlockStyle}" />
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource DialogButtonStyle}" />
+        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource DialogTextBoxStyle}" />
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0">
+            Field
+        </Label>
+        <Label Grid.Row="0" Grid.Column="1">
+            Value
+        </Label>
+
+        <Label Grid.Row="1" Grid.Column="0">
+            Last Name starts with...
+        </Label>
+        <TextBox x:Name="LastNameValueTextbox" 
+                 Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                 Style="{StaticResource DialogNameTextBoxStyle}" 
+                 Text="{Binding Filter.LastNameValue,Mode=TwoWay,UpdateSourceTrigger=Explicit}"/>
+
+        <Label Grid.Row="2" Grid.Column="0">
+            First Name starts with...
+        </Label>
+        <TextBox x:Name="FirstNameValueTextbox" 
+                 Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+                 Style="{StaticResource DialogNameTextBoxStyle}" 
+                 Text="{Binding Filter.FirstNameValue,Mode=TwoWay,UpdateSourceTrigger=Explicit}"/>
+
+        <Label Grid.Row="3" Grid.Column="0">
+            ID is...
+        </Label>
+        <TextBox x:Name="IdValueTextbox"
+                 Grid.Row="3" Grid.Column="1" 
+                 Style="{StaticResource DialogTextBoxStyle}" 
+                 Text="{Binding Filter.IdValue,Mode=TwoWay,UpdateSourceTrigger=Explicit}"/>
+
+        <Button Grid.Row="4" Grid.Column="1" 
+                IsDefault="True" Click="OKButton_OnClick">
+            Apply Filter
+        </Button>
+        <Button Grid.Row="4" Grid.Column="2" 
+                IsCancel="True">
+            Cancel
+        </Button>
+    </Grid>
+</Window>

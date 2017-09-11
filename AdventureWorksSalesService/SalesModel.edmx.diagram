@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="669acb4cf415498fa00a1eae169a6b4c" Name="CompleteDiagram" ZoomLevel="77">
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.CountryRegionCurrency" Width="1.5" PointX="9.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.CreditCard" PointX="9.25" PointY="21.375" Width="1.5" IsExpanded="true" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.Currency" Width="1.5" PointX="7" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.CurrencyRate" Width="1.5" PointX="9.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.Customer" Width="1.5" PointX="8.25" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.PersonCreditCard" PointX="14.5" PointY="21" Width="1.75" IsExpanded="true" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.SalesOrderDetail" Width="1.5" PointX="16.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.SalesOrderHeader" Width="1.5" PointX="11.5" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.SalesOrderHeaderSalesReason" Width="1.5" PointX="13.75" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.SalesPerson" Width="1.5" PointX="3.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.SalesPersonQuotaHistory" Width="1.5" PointX="6" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.SalesReason" Width="1.5" PointX="11.5" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.SalesTaxRate" Width="1.5" PointX="3.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.SalesTerritory" Width="1.5" PointX="1.5" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.SalesTerritoryHistory" Width="1.5" PointX="8" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.ShoppingCartItem" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.SpecialOffer" Width="1.5" PointX="12.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.SpecialOfferProduct" Width="1.5" PointX="14.5" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.Store" Width="1.5" PointX="6" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.vIndividualCustomer" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.vPersonDemographic" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.vSalesPerson" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.vSalesPersonSalesByFiscalYear" Width="1.5" PointX="11.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.vStoreWithAddress" Width="1.5" PointX="14.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.vStoreWithContact" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.vStoreWithDemographic" Width="1.5" PointX="16.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_CountryRegionCurrency_Currency_CurrencyCode" ManuallyRouted="false" />
+        <AssociationConnector ManuallyRouted="false" Association="AdventureWorks.SalesModel.FK_PersonCreditCard_CreditCard_CreditCardID" />
+        <AssociationConnector ManuallyRouted="false" Association="AdventureWorks.SalesModel.FK_SalesOrderHeader_CreditCard_CreditCardID" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_CurrencyRate_Currency_FromCurrencyCode" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_CurrencyRate_Currency_ToCurrencyCode" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_SalesOrderHeader_CurrencyRate_CurrencyRateID" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_Customer_SalesTerritory_TerritoryID" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_Customer_Store_StoreID" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_SalesOrderHeader_Customer_CustomerID" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_SalesOrderDetail_SpecialOfferProduct_SpecialOfferIDProductID" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_SalesOrderHeader_SalesPerson_SalesPersonID" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_SalesOrderHeader_SalesTerritory_TerritoryID" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_SalesOrderHeaderSalesReason_SalesOrderHeader_SalesOrderID" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_SalesOrderHeaderSalesReason_SalesReason_SalesReasonID" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_SalesPerson_SalesTerritory_TerritoryID" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_SalesPersonQuotaHistory_SalesPerson_BusinessEntityID" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_SalesTerritoryHistory_SalesPerson_BusinessEntityID" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_Store_SalesPerson_SalesPersonID" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_SalesTerritoryHistory_SalesTerritory_TerritoryID" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_SpecialOfferProduct_SpecialOffer_SpecialOfferID" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.Address" Width="1.75" PointX="0.875" PointY="7.25" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.AddressType" Width="1.5" PointX="0.75" PointY="18.25" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.BusinessEntity" Width="1.5" PointX="0.75" PointY="14.125" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.BusinessEntityAddress" Width="2.125" PointX="3" PointY="12.125" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.BusinessEntityContact" Width="2.375" PointX="8.25" PointY="13.375" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.ContactType" Width="1.5" PointX="6" PointY="10.75" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.CountryRegion" Width="1.5" PointX="1.5" PointY="22" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.EmailAddress" Width="1.5" PointX="5.25" PointY="27.125" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.Person" PointX="3" PointY="16" Width="1.5" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.PersonPhone" Width="1.5" PointX="5.25" PointY="17.625" IsExpanded="true" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.PhoneNumberType" Width="1.5" PointX="3" PointY="29.75" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.StateProvince" Width="1.75" PointX="1.5" PointY="1.375" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.vAdditionalContactInfo" Width="1.5" PointX="16.75" PointY="10.75" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.vStateProvinceCountryRegion" Width="1.5" PointX="18.75" PointY="0.75" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_Address_StateProvince_StateProvinceID" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_BusinessEntityAddress_Address_AddressID" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_SalesOrderHeader_Address_BillToAddressID" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_SalesOrderHeader_Address_ShipToAddressID" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_BusinessEntityAddress_AddressType_AddressTypeID" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_BusinessEntityAddress_BusinessEntity_BusinessEntityID" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_BusinessEntityContact_BusinessEntity_BusinessEntityID" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_Person_BusinessEntity_BusinessEntityID" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_Store_BusinessEntity_BusinessEntityID" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_BusinessEntityContact_ContactType_ContactTypeID" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_BusinessEntityContact_Person_PersonID" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_CountryRegionCurrency_CountryRegion_CountryRegionCode" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_SalesTerritory_CountryRegion_CountryRegionCode" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_StateProvince_CountryRegion_CountryRegionCode" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_EmailAddress_Person_BusinessEntityID" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_Customer_Person_PersonID" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_PersonCreditCard_Person_BusinessEntityID" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_PersonPhone_Person_BusinessEntityID" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_PersonPhone_PhoneNumberType_PhoneNumberTypeID" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_SalesTaxRate_StateProvince_StateProvinceID" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_StateProvince_SalesTerritory_TerritoryID" />
+      </Diagram>
+      <Diagram DiagramId="12233ae8b8db401f8e979c1f463e5b7f" Name="DocumentationDiagram" ZoomLevel="98" DisplayType="true" >
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.BusinessEntity" Width="2.5" PointX="12.125" PointY="1" FillColor="192, 64, 0" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.Person" Width="2.5" PointX="4" PointY="2.875" FillColor="192, 64, 0" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_Person_BusinessEntity_BusinessEntityID" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.PersonPhone" Width="2.5" PointX="0.75" PointY="2.875" FillColor="Maroon" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_PersonPhone_Person_BusinessEntityID" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.EmailAddress" Width="2.5" PointX="4" PointY="7.625" FillColor="Navy" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_EmailAddress_Person_BusinessEntityID" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.CreditCard" Width="2.5" PointX="7.25" PointY="5.5" FillColor="Green" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.PersonCreditCard" Width="2.5" PointX="7.25" PointY="2.875" FillColor="Green" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_PersonCreditCard_CreditCard_CreditCardID" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_PersonCreditCard_Person_BusinessEntityID" />
+        <EntityTypeShape EntityType="AdventureWorks.SalesModel.PhoneNumberType" Width="2.5" PointX="0.75" PointY="5.5" FillColor="Black" />
+        <AssociationConnector Association="AdventureWorks.SalesModel.FK_PersonPhone_PhoneNumberType_PhoneNumberTypeID" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

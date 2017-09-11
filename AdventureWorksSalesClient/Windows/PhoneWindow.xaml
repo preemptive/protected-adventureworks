@@ -1,0 +1,107 @@
+﻿<Window x:Class="AdventureWorksSalesClient.Windows.PhoneWindow"    
+        
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AdventureWorksSalesClient"
+        xmlns:salesServiceReference="clr-namespace:AdventureWorksSalesClient.SalesServiceReference"
+        mc:Ignorable="d"
+        
+        Title="Adventure Works Sales | Customer Phone Information" 
+        Style="{StaticResource SubinformationWindowStyle}" 
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Loaded="OnLoaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="PhoneDataViewSource" 
+                              d:DesignSource="{d:DesignInstance {x:Type salesServiceReference:PersonPhone}, CreateList=True}"/>
+        <local:PhoneNumberTypeConverter x:Key="PhoneNumberTypeConverter" />
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Style="{StaticResource RibbonStyle}">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource RibbonButtonStyle}" />
+                <Style TargetType="{x:Type Line}" BasedOn="{StaticResource RibbonSeparatorStyle}" />
+                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextBlockStyle}" />
+            </StackPanel.Resources>
+
+            <Button Click="AddButton_OnClick">
+                _Add Phone...
+            </Button>
+            <Line />
+
+            <TextBlock Width="240">
+                Edits must be made using the "Edit..." buttons for each row. Changes are saved when you close the Edit dialog.
+            </TextBlock>
+            <Line />
+
+            <StackPanel Width="460" >
+                <Label Style="{StaticResource CompanyNameLabelStyle}"/>
+                <Label Style="{StaticResource WindowNameLabelStyle}">
+                    Phone Information
+                </Label>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Top">
+            <Border Style="{StaticResource CustomerStackPanelBorderStyle}" />
+            <Label Content="{Binding CustomerDescription}"/>
+        </StackPanel>
+
+        <DataGrid Grid.Row="2" 
+                  Style="{StaticResource DataGridStyle}"
+                  ItemsSource="{Binding Source={StaticResource PhoneDataViewSource}}">
+            <DataGrid.Columns>
+
+                <DataGridTemplateColumn Header="Phone Number" Width="6*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Style="{StaticResource ReadOnlyTextBoxStyle}" 
+                                     Text="{Binding PhoneNumber}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Type" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Style="{StaticResource ReadOnlyTextBoxStyle}" 
+                                     Text="{Binding PhoneNumberTypeID, Converter={StaticResource PhoneNumberTypeConverter}}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Edit" Width="3*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Style="{StaticResource ButtonStyle}"
+                                    Tag="{Binding BusinessEntityID}" 
+                                    Click="EditPhoneButton_OnClick">
+                                Edit...
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+                <DataGridTemplateColumn Header="Delete" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Style="{StaticResource DeleteButtonStyle}" 
+                                    Tag="{Binding BusinessEntityID}" 
+                                    Click="DeleteButton_OnClick">
+                                Delete
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

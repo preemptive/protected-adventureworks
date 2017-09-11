@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CustomerManagement" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost/Sales/CustomerManagement.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost/Sales/CustomerManagement.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost/Sales/CustomerManagement.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AdventureWorksSalesService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICustomerManagementService_CreateCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCustomer" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerManagementService_CreateCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerManagementService_RemoveCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveCustomer" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerManagementService_RemoveCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerManagementService_CreateEmailAndAssociateWithCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateEmailAndAssociateWithCustomer" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerManagementService_CreateEmailAndAssociateWithCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateEmailAndAssociateWithCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerManagementService_RemoveEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveEmail" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerManagementService_RemoveEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerManagementService_CreatePhoneAndAssociateWithCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePhoneAndAssociateWithCustomer" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerManagementService_CreatePhoneAndAssociateWithCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePhoneAndAssociateWithCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerManagementService_ReplacePhone_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReplacePhone" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerManagementService_ReplacePhone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReplacePhoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerManagementService_RemovePhone_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemovePhone" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerManagementService_RemovePhone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemovePhoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerManagementService_CreateCreditCardAndAssociateWithCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCreditCardAndAssociateWithCustomer" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerManagementService_CreateCreditCardAndAssociateWithCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCreditCardAndAssociateWithCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerManagementService_CreateCreditCardAndAssociateWithCustomer_CreditCardNumberInUseFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/AdventureWorksSalesService" name="detail" element="q1:CreditCardNumberInUseFault" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerManagementService_AssociateCreditCardWithCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:AssociateCreditCardWithCustomer" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerManagementService_AssociateCreditCardWithCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AssociateCreditCardWithCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerManagementService_DisassociateCreditCardFromCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:DisassociateCreditCardFromCustomer" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerManagementService_DisassociateCreditCardFromCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DisassociateCreditCardFromCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerManagementService_RemoveCreditCard_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveCreditCard" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerManagementService_RemoveCreditCard_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveCreditCardResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ICustomerManagementService">
+    <wsdl:operation name="CreateCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerManagementService/CreateCustomer" message="tns:ICustomerManagementService_CreateCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerManagementService/CreateCustomerResponse" message="tns:ICustomerManagementService_CreateCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerManagementService/RemoveCustomer" message="tns:ICustomerManagementService_RemoveCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerManagementService/RemoveCustomerResponse" message="tns:ICustomerManagementService_RemoveCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateEmailAndAssociateWithCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerManagementService/CreateEmailAndAssociateWithCustomer" message="tns:ICustomerManagementService_CreateEmailAndAssociateWithCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerManagementService/CreateEmailAndAssociateWithCustomerResponse" message="tns:ICustomerManagementService_CreateEmailAndAssociateWithCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerManagementService/RemoveEmail" message="tns:ICustomerManagementService_RemoveEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerManagementService/RemoveEmailResponse" message="tns:ICustomerManagementService_RemoveEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePhoneAndAssociateWithCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerManagementService/CreatePhoneAndAssociateWithCustomer" message="tns:ICustomerManagementService_CreatePhoneAndAssociateWithCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerManagementService/CreatePhoneAndAssociateWithCustomerResponse" message="tns:ICustomerManagementService_CreatePhoneAndAssociateWithCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReplacePhone">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerManagementService/ReplacePhone" message="tns:ICustomerManagementService_ReplacePhone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerManagementService/ReplacePhoneResponse" message="tns:ICustomerManagementService_ReplacePhone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemovePhone">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerManagementService/RemovePhone" message="tns:ICustomerManagementService_RemovePhone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerManagementService/RemovePhoneResponse" message="tns:ICustomerManagementService_RemovePhone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCreditCardAndAssociateWithCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerManagementService/CreateCreditCardAndAssociateWithCustomer" message="tns:ICustomerManagementService_CreateCreditCardAndAssociateWithCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerManagementService/CreateCreditCardAndAssociateWithCustomerResponse" message="tns:ICustomerManagementService_CreateCreditCardAndAssociateWithCustomer_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICustomerManagementService/CreateCreditCardAndAssociateWithCustomerCreditCardNumberInUseFaultFault" name="CreditCardNumberInUseFaultFault" message="tns:ICustomerManagementService_CreateCreditCardAndAssociateWithCustomer_CreditCardNumberInUseFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AssociateCreditCardWithCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerManagementService/AssociateCreditCardWithCustomer" message="tns:ICustomerManagementService_AssociateCreditCardWithCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerManagementService/AssociateCreditCardWithCustomerResponse" message="tns:ICustomerManagementService_AssociateCreditCardWithCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DisassociateCreditCardFromCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerManagementService/DisassociateCreditCardFromCustomer" message="tns:ICustomerManagementService_DisassociateCreditCardFromCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerManagementService/DisassociateCreditCardFromCustomerResponse" message="tns:ICustomerManagementService_DisassociateCreditCardFromCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveCreditCard">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerManagementService/RemoveCreditCard" message="tns:ICustomerManagementService_RemoveCreditCard_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerManagementService/RemoveCreditCardResponse" message="tns:ICustomerManagementService_RemoveCreditCard_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ICustomerManagementService" type="tns:ICustomerManagementService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateCustomer">
+      <soap:operation soapAction="http://tempuri.org/ICustomerManagementService/CreateCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveCustomer">
+      <soap:operation soapAction="http://tempuri.org/ICustomerManagementService/RemoveCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEmailAndAssociateWithCustomer">
+      <soap:operation soapAction="http://tempuri.org/ICustomerManagementService/CreateEmailAndAssociateWithCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveEmail">
+      <soap:operation soapAction="http://tempuri.org/ICustomerManagementService/RemoveEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePhoneAndAssociateWithCustomer">
+      <soap:operation soapAction="http://tempuri.org/ICustomerManagementService/CreatePhoneAndAssociateWithCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReplacePhone">
+      <soap:operation soapAction="http://tempuri.org/ICustomerManagementService/ReplacePhone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemovePhone">
+      <soap:operation soapAction="http://tempuri.org/ICustomerManagementService/RemovePhone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCreditCardAndAssociateWithCustomer">
+      <soap:operation soapAction="http://tempuri.org/ICustomerManagementService/CreateCreditCardAndAssociateWithCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CreditCardNumberInUseFaultFault">
+        <soap:fault use="literal" name="CreditCardNumberInUseFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AssociateCreditCardWithCustomer">
+      <soap:operation soapAction="http://tempuri.org/ICustomerManagementService/AssociateCreditCardWithCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DisassociateCreditCardFromCustomer">
+      <soap:operation soapAction="http://tempuri.org/ICustomerManagementService/DisassociateCreditCardFromCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveCreditCard">
+      <soap:operation soapAction="http://tempuri.org/ICustomerManagementService/RemoveCreditCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CustomerManagement">
+    <wsdl:port name="BasicHttpBinding_ICustomerManagementService" binding="tns:BasicHttpBinding_ICustomerManagementService">
+      <soap:address location="http://localhost/Sales/CustomerManagement.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
