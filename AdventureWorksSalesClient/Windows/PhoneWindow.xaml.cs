@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -131,6 +133,17 @@ namespace AdventureWorksSalesClient.Windows
         private void UpdatePhoneTypes()
         {
             PhoneNumberTypeConverter.PopulateValues(clients.Data);
+        }
+
+        // To be called by the "Sensitive Data" Debugging Check for UpdatePhones
+        private void ReportDebugging(bool isDebugging)
+        {
+            if (isDebugging)
+            {
+                ClientAppInsights.TelemetryClient.TrackEvent(
+                    "Debugger Detected when Querying Sensitive Data",
+                    new Dictionary<string, string> { { "Query", "Phone Numbers" } });
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data.Services.Client;
@@ -228,6 +229,17 @@ namespace AdventureWorksSalesClient.Windows
 
             UpdateData();
             ChangesPending = false;
+        }
+
+        // To be called by the "Sensitive Data" Debugging Check for UpdateData
+        private void ReportDebugging(bool isDebugging)
+        {
+            if (isDebugging)
+            {
+                ClientAppInsights.TelemetryClient.TrackEvent(
+                    "Debugger Detected when Querying Sensitive Data",
+                    new Dictionary<string, string> { { "Query", "Email Addresses" } });
+            }
         }
     }
 }
