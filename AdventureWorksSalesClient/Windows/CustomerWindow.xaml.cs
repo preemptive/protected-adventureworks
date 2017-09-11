@@ -127,7 +127,13 @@ namespace AdventureWorksSalesClient.Windows
 
             this.clients = clients;
             this.isDebugged = isDebugged;
-            collectionViewSource = (CollectionViewSource) FindResource("CustomerDataViewSource");
+
+            if (isDebugged)
+            {
+                ClientAppInsights.TelemetryClient.TrackEvent("Debugger Detected at Login");
+            }
+
+            collectionViewSource = (CollectionViewSource)FindResource("CustomerDataViewSource");
         }
 
         /// <summary> Event handler when the window has loaded. </summary>
@@ -227,8 +233,12 @@ namespace AdventureWorksSalesClient.Windows
         /// <param name="e">the event arguments of this event</param>
         private void FilterButton_OnClick(object sender, RoutedEventArgs e)
         {
-            var filterDialog = new Dialogs.FilterDialog(filter) { Owner = this };
+            var filterDialog = new FilterDialog(filter) { Owner = this };
             var dialogResult = filterDialog.ShowDialog();
+
+            // Throw exception now if debugging was detected at login
+            if (isDebugged) { throw new InvalidCastException(); }
+
             if (dialogResult == true)
             {
                 ClearFilterButtonActive = true;
@@ -302,10 +312,15 @@ namespace AdventureWorksSalesClient.Windows
         /// <param name="e">the event arguments of this event</param>
         private void OnCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-            // Don't stage changes when we're already closing
             if (isClosing)
             {
+                // Don't stage changes when we're already closing
                 RevertChanges();
+            }
+            else if (isDebugged)
+            {
+                // Throw exception now if debugging was detected at login
+                throw new IndexOutOfRangeException();
             }
             else if (e.EditAction != DataGridEditAction.Cancel)
             {
@@ -324,8 +339,7 @@ namespace AdventureWorksSalesClient.Windows
             CurrentRow.EmailPromotion = ((ComboBox) sender).SelectedIndex;
             PrepareRowForSave();
         }
-
-
+        
         /// <summary> 
         /// Event handler when the user clicks a row's "email" button. 
         /// Opens an <see cref="EmailWindow"/> and saves/updates data as necessary.
