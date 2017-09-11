@@ -45,19 +45,25 @@
     <option>dontsendtamper</option>
   </sos>
   <extattributes>
-    <extattribute name="PreEmptive.Attributes.DebuggingCheckAttribute">
+    <extattribute name="PreEmptive.Attributes.TamperCheckAttribute">
       <codetransformlist>
         <codetransform name="analytics" />
       </codetransformlist>
+      <type name="AdventureWorksSalesClient.Utilities">
+        <method name="ShowAndHandleDialog" signature="void(string, string, System.Windows.MessageBoxButton, System.Windows.MessageBoxImage, System.Windows.MessageBoxResult, System.Collections.Generic.Dictionary`2&lt;System.Windows.MessageBoxResult,System.Action&gt;)" />
+      </type>
       <type name="AdventureWorksSalesClient.Dialogs.LoginDialog">
         <method name="ConfirmLogin" signature="void()" />
       </type>
+      <type name="AdventureWorksSalesClient.Windows.CustomerWindow">
+        <method name="UpdateData" signature="void()" />
+      </type>
       <propertylist>
-        <property name="Action" value="None" />
+        <property name="Action" value="Exit" />
         <property name="ActionProbability" value="1" />
-        <property name="ApplicationNotificationSinkName" value="isDebugged" />
-        <property name="ApplicationNotificationSinkOwner" value="AdventureWorksSalesClient.Dialogs.LoginDialog" />
-        <property name="ApplicationNotificationSinkElement" value="Field" />
+        <property name="ApplicationNotificationSinkName" value="ReportTampering" />
+        <property name="ApplicationNotificationSinkOwner" value="AdventureWorksSalesClient.Utilities" />
+        <property name="ApplicationNotificationSinkElement" value="Method" />
         <property name="ExtendedKeySourceName" value="" />
         <property name="ExtendedKeySourceOwner" value="" />
         <property name="ExtendedKeySourceElement" value="None" />
@@ -83,6 +89,25 @@
         <property name="ApplicationNotificationSinkName" value="ReportDebugging" />
         <property name="ApplicationNotificationSinkOwner" value="" />
         <property name="ApplicationNotificationSinkElement" value="Method" />
+        <property name="ExtendedKeySourceName" value="" />
+        <property name="ExtendedKeySourceOwner" value="" />
+        <property name="ExtendedKeySourceElement" value="None" />
+        <property name="ExtendedKeyMethodArguments" value="" />
+      </propertylist>
+    </extattribute>
+    <extattribute name="PreEmptive.Attributes.DebuggingCheckAttribute">
+      <codetransformlist>
+        <codetransform name="analytics" />
+      </codetransformlist>
+      <type name="AdventureWorksSalesClient.Dialogs.LoginDialog">
+        <method name="ConfirmLogin" signature="void()" />
+      </type>
+      <propertylist>
+        <property name="Action" value="None" />
+        <property name="ActionProbability" value="1" />
+        <property name="ApplicationNotificationSinkName" value="isDebugged" />
+        <property name="ApplicationNotificationSinkOwner" value="AdventureWorksSalesClient.Dialogs.LoginDialog" />
+        <property name="ApplicationNotificationSinkElement" value="Field" />
         <property name="ExtendedKeySourceName" value="" />
         <property name="ExtendedKeySourceOwner" value="" />
         <property name="ExtendedKeySourceElement" value="None" />
