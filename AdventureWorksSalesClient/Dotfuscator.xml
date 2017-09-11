@@ -44,6 +44,27 @@
     <option>sendanalytics</option>
     <option>dontsendtamper</option>
   </sos>
+  <extattributes>
+    <extattribute name="PreEmptive.Attributes.DebuggingCheckAttribute">
+      <codetransformlist>
+        <codetransform name="analytics" />
+      </codetransformlist>
+      <type name="AdventureWorksSalesClient.Dialogs.LoginDialog">
+        <method name="ConfirmLogin" signature="void()" />
+      </type>
+      <propertylist>
+        <property name="Action" value="None" />
+        <property name="ActionProbability" value="1" />
+        <property name="ApplicationNotificationSinkName" value="isDebugged" />
+        <property name="ApplicationNotificationSinkOwner" value="AdventureWorksSalesClient.Dialogs.LoginDialog" />
+        <property name="ApplicationNotificationSinkElement" value="Field" />
+        <property name="ExtendedKeySourceName" value="" />
+        <property name="ExtendedKeySourceOwner" value="" />
+        <property name="ExtendedKeySourceElement" value="None" />
+        <property name="ExtendedKeyMethodArguments" value="" />
+      </propertylist>
+    </extattribute>
+  </extattributes>
   <smartobfuscation>
     <smartobfuscationreport verbosity="all" overwrite="false" />
   </smartobfuscation>
