@@ -3,7 +3,20 @@
 <dotfuscator version="2.3">
   <input>
     <loadpaths />
-    <asmlist />
+    <asmlist>
+      <package refid="b0d33e69-2218-4b7f-8f29-60753f8a9f18">
+        <file dir="${configdir}\bin" name="Release" />
+        <asmlist>
+          <inputassembly refid="f13cbfb0-696c-49df-8871-bef890399ef6">
+            <option>honoroas</option>
+            <option>stripoa</option>
+            <option>library</option>
+            <option>transformxaml</option>
+            <file dir="" name="AdventureWorksSalesClient.exe" />
+          </inputassembly>
+        </asmlist>
+      </package>
+    </asmlist>
   </input>
   <output>
     <file dir="${configdir}\Dotfuscated" />
