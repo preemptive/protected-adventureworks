@@ -36,3 +36,24 @@ To set up the database:
   * Depending on your configuration, you may be prompted to set a new password after logging in.
 11. Validate the login's permissions by expanding the *AdventureWorks2014* database node in Object Explorer, expanding the *Tables* sub-node, right-clicking the *Person.Person* table node, and choosing *Select Top 1000 Rows*. Contents of the table should appear.
 
+To build and deploy the web service:
+
+1. Run Visual Studio 2017 as an administrator (needed to publish the service to IIS).
+2. Open the `AdventureWorksInternal.sln` solution file and expand the *AdventureWorksSalesService* project node in Solution Explorer.
+3. (*Optional*) If using Application Insights, open the `ApplicationInsights.config` file and replace the comment between the `<InstrumentationKey>` tags with the Application Insights instrumentation key for the web service.
+4. Open the `Web.config` file and locate the `<connectionStrings>` node. Within the connection strings for  both `SalesEntities` and `CustomerManagement`, replace the following substrings as follows:
+  * Replace `INSERT_SQL_INSTANCE_NAME_HERE` with the name of your SQL Server instance (e.g., `.\SQLEXPRESS` for a locally-hosted SQL Server Express).
+  * Replace `INSERT_SQL_LOGIN_HERE` with the name of the SQL Server login you created when setting up the database.
+  * Replace `INSERT_SQL_PASSWORD_HERE` with the plain-text password for the SQL Server login.
+5. Right click on the *AdventureWorksSalesService* project node and select *Publish...*.
+6. Select *IIS, FTP, etc* and click *Publish*.
+7. In the Publish profile dialog, enter the following for the Connection page:
+  * *Publish method*: *Web Deploy*
+  * *Server*: `localhost`
+  * *Site name*: `Default Web Site/Sales`
+8. Click *Next*.
+9. Ensure the *Configuration* is set to *Release*.
+10. Click *Save*.
+11. Visual Studio builds and publishes the web service to your local IIS instance.
+12. Verify the web service is available by opening a web browser and browsing to `http://localhost/Sales/Authentication.svc`. The browser should display a "You have created a service" page.
+
