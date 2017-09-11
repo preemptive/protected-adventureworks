@@ -57,3 +57,14 @@ To build and deploy the web service:
 11. Visual Studio builds and publishes the web service to your local IIS instance.
 12. Verify the web service is available by opening a web browser and browsing to `http://localhost/Sales/Authentication.svc`. The browser should display a "You have created a service" page.
 
+To build and deploy the desktop client without Runtime Check protection:
+
+1. Run Visual Studio 2017.
+2. Open the `AdventureWorksInternal.sln` solution file and expand the *AdventureWorksSalesClient* project node in Solution Explorer.
+3. (*Optional*) If using Application Insights, open the `ApplicationInsights.config` file and replace the comment between the `<InstrumentationKey>` tags with the Application Insights instrumentation key for the desktop client.
+4. Select the *Release* solution configuration from the appropriate drop-down.
+5. Right-click the *AdventureWorksSalesClient* project node in Solution Explorer and select *Build*. 
+6. Browse to `AdventureWorksSalesClient\bin\Release` and run `AdventureWorksSalesClient.exe`.
+7. At the login prompt, give the username `UserA`, the password `PasswordA`, and the confirmation code `SecretA`.
+8. The desktop client opens, allowing reading and writing of AdventureWorks2014 customer data.
+
