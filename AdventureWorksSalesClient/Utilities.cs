@@ -155,5 +155,13 @@ namespace AdventureWorksSalesClient
                     { MessageBoxResult.Cancel, cancelCallback },
                 });
         }
+
+        internal static void ReportTampering(bool isTampered)
+        {
+            if (isTampered)
+            {
+                ClientAppInsights.TelemetryClient.TrackEvent("Tampering Detected");
+            }
+        }
     }
 }
