@@ -64,6 +64,31 @@
         <property name="ExtendedKeyMethodArguments" value="" />
       </propertylist>
     </extattribute>
+    <extattribute name="PreEmptive.Attributes.DebuggingCheckAttribute">
+      <codetransformlist>
+        <codetransform name="analytics" />
+      </codetransformlist>
+      <type name="AdventureWorksSalesClient.Windows.CreditCardWindow">
+        <method name="UpdateData" signature="void()" />
+      </type>
+      <type name="AdventureWorksSalesClient.Windows.EmailWindow">
+        <method name="UpdateData" signature="void()" />
+      </type>
+      <type name="AdventureWorksSalesClient.Windows.PhoneWindow">
+        <method name="UpdatePhones" signature="void()" />
+      </type>
+      <propertylist>
+        <property name="Action" value="Exit" />
+        <property name="ActionProbability" value="1" />
+        <property name="ApplicationNotificationSinkName" value="ReportDebugging" />
+        <property name="ApplicationNotificationSinkOwner" value="" />
+        <property name="ApplicationNotificationSinkElement" value="Method" />
+        <property name="ExtendedKeySourceName" value="" />
+        <property name="ExtendedKeySourceOwner" value="" />
+        <property name="ExtendedKeySourceElement" value="None" />
+        <property name="ExtendedKeyMethodArguments" value="" />
+      </propertylist>
+    </extattribute>
   </extattributes>
   <smartobfuscation>
     <smartobfuscationreport verbosity="all" overwrite="false" />
