@@ -10,7 +10,8 @@ namespace AdventureWorksSalesClient
     {
         private void OnStartup(object sender, StartupEventArgs eventArgs)
         {
-            // Attach an unhandled exception handler that displays the error to the user
+            // Attach an unhandled exception handler that reports the exception
+            // to app insights, logs it, and informs the user of it.
             AppDomain.CurrentDomain.UnhandledException += (o, args) =>
             {
                 var ex = (args.ExceptionObject as Exception);

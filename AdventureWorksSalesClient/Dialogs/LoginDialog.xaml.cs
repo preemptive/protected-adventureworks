@@ -46,6 +46,12 @@ namespace AdventureWorksSalesClient.Dialogs
             HandshakeToken = null;
         }
 
+        /// <summary>
+        /// Event handler when the window is closing. 
+        /// Flushes app insights data.
+        /// </summary>
+        /// <param name="sender">the sender of this event</param>
+        /// <param name="e">the event arguments of this event</param>
         private void OnClosing(object sender, CancelEventArgs e)
         {
             ClientAppInsights.Shutdown();
