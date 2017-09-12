@@ -8,9 +8,11 @@ The solution contains two apps:
 * *AdventureWorksSalesService*: An ASP.NET web service that exposes customer data from the database, and
 * *AdventureWorksSalesClient*: A WPF desktop client that interacts with that web service.
 
+For details, including how this project's protection was configured, see [the corresponding MSDN Magazine article](). **TODO: URL**
+
 ## Building the Sample
 
-The following are prerequisites for using this sample:
+The following are prerequisites for building this sample:
 
 * Visual Studio 2017
 * Microsoft SQL Server or SQL Server Express
@@ -57,7 +59,7 @@ To build and deploy the web service:
 11. Visual Studio builds and publishes the web service to your local IIS instance.
 12. Verify the web service is available by opening a web browser and browsing to `http://localhost/Sales/Authentication.svc`. The browser should display a "You have created a service" page.
 
-To build and deploy the desktop client without Runtime Check protection:
+To build and test the desktop client without Runtime Check protection:
 
 1. Run Visual Studio 2017.
 2. Open the `AdventureWorksInternal.sln` solution file and expand the *AdventureWorksSalesClient* project node in Solution Explorer.
@@ -68,3 +70,52 @@ To build and deploy the desktop client without Runtime Check protection:
 7. At the login prompt, give the username `UserA`, the password `PasswordA`, and the confirmation code `SecretA`.
 8. The desktop client opens, allowing reading and writing of AdventureWorks2014 customer data.
 
+## Protecting the Sample
+
+You will need [*PreEmptive Protection - Dotfuscator* Community Edition](https://docs.microsoft.com/en-us/visualstudio/ide/dotfuscator/) (a.k.a. "Dotfuscator CE") to protect the sample.
+This is a software protection tool provided for free to all users of Visual Studio.
+See [this Microsoft Docs page for install details](https://docs.microsoft.com/en-us/visualstudio/ide/dotfuscator/install).
+
+To add Runtime Check protection to the desktop client:
+
+1. Build the desktop client as described in the previous section.
+2. In Visual Studio 2017, open the *Tools* menu and select *PreEmptive Protection - Dotfuscator*.
+3. If this is your first time running Dotfuscator CE, read and accept the license agreement, and (optionally) register your copy to enable command-line builds.
+4. From the Dotfuscator CE user interface, open the *File* menu and select *Open Project...*.
+5. Browse to and open `AdventureWorksSalesClient\Dotfuscator.xml`.
+6. (*Optional*) View the Runtime Checks that Dotfuscator will inject by opening the *Injection* screen and selecting the *Checks* tab. Two Debugging Checks and one Tamper Check will be listed; double-click each for details.
+7. Click the *Build* button.
+8. Verify that the protection build completes and that Dotfuscator's *Build Output* pane displays the text `Build Finished.`
+
+Under normal use, the protected desktop client will behave identically to the unprotected version.
+To test it:
+
+1. Browse to `AdventureWorksSalesClient\Dotfuscated\Release` and run `AdventureWorksSalesClient.exe`.
+2. At the login prompt, give the username `UserA`, the password `PasswordA`, and the confirmation code `SecretA`.
+3. The desktop client opens, allowing reading and writing of AdventureWorks2014 customer data.
+
+To test the Debugging Checks:
+
+1. Open a debugger that can operate on .NET apps.
+  * If you're using WinDbg, see [this article](https://blogs.msdn.microsoft.com/kaevans/2011/04/11/intro-to-windbg-for-net-developers/) for information on how to use it with .NET apps.
+2. Run `AdventureWorksSalesClient\Dotfuscated\Release\AdventureWorksSalesClient.exe`.
+3. Trigger one of the Debugging Checks by having the debugger attached to the process at one of the following points:
+  * When entering and submitting the login confirmation code. The app will then throw exceptions if you try to filter or edit the name data of customer records, even if the debugger is no longer attached at that point.
+  * When opening or reloading data in the Email Address, Phone Number, or Credit Card windows. The app will exit.
+
+To test the Tamper Check:
+
+1. Open Dotfuscator CE again (in Visual Studio 2017, open the *Tools* menu and select *PreEmptive Protection - Dotfuscator*).
+2. From the *Tools* menu, select *Dotfuscator Command Prompt*.
+  * Note that you may see an error saying Dotfuscator CE command line support requires a registered Dotfuscator CE copy. You can ignore this error for these steps.
+3. Execute the following in the command line, substituting the path in the first command appropriately:
+
+    cd c:\path\to\project\Dotfuscated\Release  
+    mkdir ..\Tampered  
+    xcopy . ..\Tampered  
+    TamperTester AdventureWorksSalesClient.exe ..\Tampered
+
+4. Run `AdventureWorksSalesClient\Dotfuscated\Tampered\AdventureWorksSalesClient.exe`.
+5. Trigger the Tamper Check by entering and submitting the login confirmation code.
+
+For details on these checks, and how they are configured, see [this MSDN Magazine article](). **TODO: URL**
