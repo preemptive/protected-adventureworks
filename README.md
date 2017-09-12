@@ -1,4 +1,4 @@
-# Adventure Works Sales Sample
+# Dotfuscator Runtime Checks Sample
 
 This is a sample line-of-business solution that demonstrates the use of Runtime Checks, a security feature offered by Dotfuscator Community Edition, which is included with Visual Studio 2017.
 
