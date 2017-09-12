@@ -2,7 +2,7 @@
 
 This is a sample line-of-business solution that demonstrates the use of Runtime Checks, a security feature offered by Dotfuscator Community Edition, which is included with Visual Studio 2017.
 
-The solution is based on the AdventureWorks2014 OLTP database sample for Microsoft SQL Server.
+The solution is based on the [AdventureWorks2014 OLTP database sample for Microsoft SQL Server](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks2014).
 The solution contains two apps:
 
 * *AdventureWorksSalesService*: An ASP.NET web service that exposes customer data from the database, and
@@ -12,21 +12,21 @@ For details, including how this project's protection was configured, see [the co
 
 ## Building the Sample
 
-The following are prerequisites for building this sample:
+The following are prerequisites for using this sample:
 
 * Visual Studio 2017
 * Microsoft SQL Server or SQL Server Express
 * Microsoft SQL Server Management Studio
 * Internet Information Services (IIS) for Windows
-* (*Optional*) An Application Insights resource the web service
-* (*Optional*) An Application Insights resource the desktop client
+* (*Optional*) An Application Insights resource for the web service
+* (*Optional*) An Application Insights resource for the desktop client
 
 To set up the database:
 
 1. Download [the AdventureWorks2014 OLTP database sample](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks2014) as a full database backup (ZIP archive containing a BAK file).
 2. Extract the BAK file to the `Database` subdirectory of this repository.
 3. Run SQL Server Management Studio and connect to your SQL Server instance.
-4. These instructions assume your [sever authentication mode](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/change-server-authentication-mode#SSMSProcedure) is *SQL Server and Windows Authentication mode*.
+4. These instructions assume your [server authentication mode](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/change-server-authentication-mode#SSMSProcedure) is *SQL Server and Windows Authentication mode*.
 5. [Create a SQL login](https://docs.microsoft.com/en-us/sql/relational-databases/security/authentication-access/create-a-login#SSMSProcedure) for the web service to use.
   * These instructions assume the login is created with *SQL Server authentication*.
   * Record these credentials in a safe place. They will be needed later.
@@ -57,7 +57,7 @@ To build and deploy the web service:
 9. Ensure the *Configuration* is set to *Release*.
 10. Click *Save*.
 11. Visual Studio builds and publishes the web service to your local IIS instance.
-12. Verify the web service is available by opening a web browser and browsing to `http://localhost/Sales/Authentication.svc`. The browser should display a "You have created a service" page.
+12. Verify the web service is available by opening a web browser and browsing to [`http://localhost/Sales/Authentication.svc`](http://localhost/Sales/Authentication.svc). The browser should display a "You have created a service" page.
 
 To build and test the desktop client without Runtime Check protection:
 
@@ -72,9 +72,9 @@ To build and test the desktop client without Runtime Check protection:
 
 ## Protecting the Sample
 
-You will need [*PreEmptive Protection - Dotfuscator* Community Edition](https://docs.microsoft.com/en-us/visualstudio/ide/dotfuscator/) (a.k.a. "Dotfuscator CE") to protect the sample.
+You will need [*PreEmptive Protection - Dotfuscator* Community Edition](https://docs.microsoft.com/en-us/visualstudio/ide/dotfuscator/) (A.K.A. "Dotfuscator CE") to protect the sample.
 This is a software protection tool provided for free to all users of Visual Studio.
-See [this Microsoft Docs page for install details](https://docs.microsoft.com/en-us/visualstudio/ide/dotfuscator/install).
+[See this page for install details](https://docs.microsoft.com/en-us/visualstudio/ide/dotfuscator/install).
 
 To add Runtime Check protection to the desktop client:
 
