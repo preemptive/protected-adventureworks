@@ -45,7 +45,12 @@ namespace AdventureWorksSalesClient.Dialogs
 
             HandshakeToken = null;
         }
-        
+
+        private void OnClosing(object sender, CancelEventArgs e)
+        {
+            ClientAppInsights.Shutdown();
+        }
+
         /// <summary> 
         /// Event handler when the user clicks the "OK" button. 
         /// Starts or confirms the login.

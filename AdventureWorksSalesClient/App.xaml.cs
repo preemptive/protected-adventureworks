@@ -16,6 +16,8 @@ namespace AdventureWorksSalesClient
                 var ex = (args.ExceptionObject as Exception);
 
                 ClientAppInsights.TelemetryClient.TrackException(ex);
+                ClientAppInsights.Shutdown();
+
                 Utilities.Log(ex);
 
                 var body = "";

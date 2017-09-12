@@ -9,6 +9,7 @@
         Title="Adventure Works Sales | Login" 
         Height="400" Width="460"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Closing="OnClosing"
         FocusManager.FocusedElement="{Binding ElementName=TextBox}">
     <Window.Resources>
         <Style TargetType="{x:Type Label}" BasedOn="{StaticResource DialogLabelStyle}" />

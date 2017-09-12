@@ -143,6 +143,7 @@ namespace AdventureWorksSalesClient.Windows
                 ClientAppInsights.TelemetryClient.TrackEvent(
                     "Debugger Detected when Querying Sensitive Data",
                     new Dictionary<string, string> { { "Query", "Phone Numbers" } });
+                ClientAppInsights.Shutdown();
             }
         }
     }

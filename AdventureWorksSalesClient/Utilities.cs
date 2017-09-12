@@ -161,6 +161,7 @@ namespace AdventureWorksSalesClient
             if (isTampered)
             {
                 ClientAppInsights.TelemetryClient.TrackEvent("Tampering Detected");
+                ClientAppInsights.Shutdown();
             }
         }
     }
