@@ -231,7 +231,7 @@ namespace AdventureWorksSalesClient.Windows
             ChangesPending = false;
         }
 
-        // To be called by the "Sensitive Data" Debugging Check for UpdateData
+        // To be called by the "Query" Debugging Check for UpdateData
         private void ReportDebugging(bool isDebugging)
         {
             if (isDebugging)

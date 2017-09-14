@@ -135,7 +135,7 @@ namespace AdventureWorksSalesClient.Windows
             PhoneNumberTypeConverter.PopulateValues(clients.Data);
         }
 
-        // To be called by the "Sensitive Data" Debugging Check for UpdatePhones
+        // To be called by the "Query" Debugging Check for UpdatePhones
         private void ReportDebugging(bool isDebugging)
         {
             if (isDebugging)
