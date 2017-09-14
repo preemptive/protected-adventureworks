@@ -10,16 +10,22 @@ The solution contains two apps:
 
 For details, including how this project's protection was configured, see [the corresponding MSDN Magazine article](). **TODO: URL**
 
-## Building the Sample
+## Prerequisites
 
 The following are prerequisites for using this sample:
 
 * Visual Studio 2017
 * Microsoft SQL Server or SQL Server Express
 * Microsoft SQL Server Management Studio
-* Internet Information Services (IIS) for Windows
+* The following Windows features:
+  * Internet Information Services (IIS) for Windows
+  * ASP.NET 4.7
+  * WCF HTTP Activation
+* Dotfuscator Community Edition (CE) version 5.32 or later. [Get the latest version here](https://docs.microsoft.com/en-us/visualstudio/ide/dotfuscator/).
 * (*Optional*) An Application Insights resource for the web service
 * (*Optional*) An Application Insights resource for the desktop client
+
+## Running the Sample
 
 To set up the database:
 
@@ -40,24 +46,27 @@ To set up the database:
 
 To build and deploy the web service:
 
-1. Run Visual Studio 2017 as an administrator (needed to publish the service to IIS).
-2. Open the `AdventureWorksInternal.sln` solution file and expand the *AdventureWorksSalesService* project node in Solution Explorer.
-3. (*Optional*) If using Application Insights, open the `ApplicationInsights.config` file and replace the comment between the `<InstrumentationKey>` tags with the Application Insights instrumentation key for the web service.
-4. Open the `Web.config` file and locate the `<connectionStrings>` node. Within the connection strings for  both `SalesEntities` and `CustomerManagement`, replace the following substrings as follows:
+1. Open the IIS Manager (`inetmgr`).
+2. Ensure [IIS' Default Web Site](https://superuser.com/questions/825580/what-exactly-is-default-website) is present. If not, [follow these instructions to re-create it](https://stackoverflow.com/a/30083183/2137382).
+3. For the Default Web Site, [enable Anonymous Authentication through the Application Pool identity](https://stackoverflow.com/questions/10418669/hosting-asp-net-in-iis7-gives-access-is-denied/16938687#16938687).
+4. Run Visual Studio 2017 as an administrator (needed to publish the service to IIS).
+5. Open the `AdventureWorksInternal.sln` solution file and expand the *AdventureWorksSalesService* project node in Solution Explorer.
+6. (*Optional*) If using Application Insights, open the `ApplicationInsights.config` file and replace the comment between the `<InstrumentationKey>` tags with the Application Insights instrumentation key for the web service.
+7. Open the `Web.config` file and locate the `<connectionStrings>` node. Within the connection strings for  both `SalesEntities` and `CustomerManagement`, replace the following substrings as follows:
   * Replace `INSERT_SQL_INSTANCE_NAME_HERE` with the name of your SQL Server instance (e.g., `.\SQLEXPRESS` for a locally-hosted SQL Server Express).
   * Replace `INSERT_SQL_LOGIN_HERE` with the name of the SQL Server login you created when setting up the database.
   * Replace `INSERT_SQL_PASSWORD_HERE` with the plain-text password for the SQL Server login.
-5. Right click on the *AdventureWorksSalesService* project node and select *Publish...*.
-6. Select *IIS, FTP, etc* and click *Publish*.
-7. In the Publish profile dialog, enter the following for the Connection page:
+8. Right click on the *AdventureWorksSalesService* project node and select *Publish...*.
+9. Select *IIS, FTP, etc* and click *Publish*.
+10. In the Publish profile dialog, enter the following for the Connection page:
   * *Publish method*: *Web Deploy*
   * *Server*: `localhost`
   * *Site name*: `Default Web Site/Sales`
-8. Click *Next*.
-9. Ensure the *Configuration* is set to *Release*.
-10. Click *Save*.
-11. Visual Studio builds and publishes the web service to your local IIS instance.
-12. Verify the web service is available by opening a web browser and browsing to [`http://localhost/Sales/Authentication.svc`](http://localhost/Sales/Authentication.svc). The browser should display a "You have created a service" page.
+11. Click *Next*.
+12. Ensure the *Configuration* is set to *Release*.
+13. Click *Save*.
+14. Visual Studio builds and publishes the web service to your local IIS instance.
+15. Verify the web service is available by opening a web browser and browsing to [`http://localhost/Sales/Authentication.svc`](http://localhost/Sales/Authentication.svc). The browser should display a "You have created a service" page.
 
 To build and test the desktop client without Runtime Check protection:
 
@@ -71,10 +80,6 @@ To build and test the desktop client without Runtime Check protection:
 8. The desktop client opens, allowing reading and writing of AdventureWorks2014 customer data.
 
 ## Protecting the Sample
-
-You will need [*PreEmptive Protection - Dotfuscator* Community Edition](https://docs.microsoft.com/en-us/visualstudio/ide/dotfuscator/) (A.K.A. "Dotfuscator CE") to protect the sample.
-This is a software protection tool provided for free to all users of Visual Studio.
-[See this page for install details](https://docs.microsoft.com/en-us/visualstudio/ide/dotfuscator/install).
 
 To add Runtime Check protection to the desktop client:
 
