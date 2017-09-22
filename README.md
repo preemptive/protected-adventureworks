@@ -21,11 +21,11 @@ The following are prerequisites for using this sample:
 
 * The following Windows features:
 
-  * Internet Information Services (IIS) for Windows
+    * Internet Information Services (IIS) for Windows
 
-  * ASP.NET 4.7
+    * ASP.NET 4.7
 
-  * WCF HTTP Activation
+    * WCF HTTP Activation
 
 * Dotfuscator Community Edition (CE) version 5.32 or later. [Get the latest version for Visual Studio 2017 here](https://www.preemptive.com/products/dotfuscator/downloads).
 
@@ -47,9 +47,9 @@ To set up the database:
 
 5. [Create a SQL login](https://docs.microsoft.com/en-us/sql/relational-databases/security/authentication-access/create-a-login#SSMSProcedure) for the web service to use.
   
-  * These instructions assume the login is created with *SQL Server authentication*.
+    * These instructions assume the login is created with *SQL Server authentication*.
   
-  * Record these credentials in a safe place. They will be needed later.
+    * Record these credentials in a safe place. They will be needed later.
 
 6. Open the `Database\ImportDatabaseBackup.sql` script. Adjust the paths as necessary, then run the script against your SQL Server instance.
 
@@ -61,7 +61,7 @@ To set up the database:
 
 10. Open another connection to your database instance, this time using *SQL Server authentication* and the login created in step 5.
 
-  * Depending on your configuration, you may be prompted to set a new password after logging in.
+    * Depending on your configuration, you may be prompted to set a new password after logging in.
 
 11. Validate the login's permissions by expanding the *AdventureWorks2014* database node in Object Explorer, expanding the *Tables* sub-node, right-clicking the *Person.Person* table node, and choosing *Select Top 1000 Rows*. Contents of the table should appear.
 
@@ -81,11 +81,11 @@ To build and deploy the web service:
 
 7. Open the `Web.config` file and locate the `<connectionStrings>` node. Within the connection strings for  both `SalesEntities` and `CustomerManagement`, replace the following substrings as follows:
 
-  * Replace `INSERT_SQL_INSTANCE_NAME_HERE` with the name of your SQL Server instance (e.g., `.\SQLEXPRESS` for a locally-hosted SQL Server Express).
+    * Replace `INSERT_SQL_INSTANCE_NAME_HERE` with the name of your SQL Server instance (e.g., `.\SQLEXPRESS` for a locally-hosted SQL Server Express).
   
-  * Replace `INSERT_SQL_LOGIN_HERE` with the name of the SQL Server login you created when setting up the database.
+    * Replace `INSERT_SQL_LOGIN_HERE` with the name of the SQL Server login you created when setting up the database.
   
-  * Replace `INSERT_SQL_PASSWORD_HERE` with the plain-text password for the SQL Server login.
+    * Replace `INSERT_SQL_PASSWORD_HERE` with the plain-text password for the SQL Server login.
 
 8. Right click on the *AdventureWorksSalesService* project node and select *Publish...*.
 
@@ -93,11 +93,11 @@ To build and deploy the web service:
 
 10. In the Publish profile dialog, enter the following for the Connection page:
 
-  * *Publish method*: *Web Deploy*
+    * *Publish method*: *Web Deploy*
   
-  * *Server*: `localhost`
+    * *Server*: `localhost`
   
-  * *Site name*: `Default Web Site/Sales`
+    * *Site name*: `Default Web Site/Sales`
 
 11. Click *Next*.
 
@@ -160,15 +160,15 @@ To test the Debugging Checks:
 
 1. Open a debugger that can operate on .NET apps.
 
-  * If you're using WinDbg, see [this article](https://blogs.msdn.microsoft.com/kaevans/2011/04/11/intro-to-windbg-for-net-developers/) for information on how to use it with .NET apps.
+    * If you're using WinDbg, see [this article](https://blogs.msdn.microsoft.com/kaevans/2011/04/11/intro-to-windbg-for-net-developers/) for information on how to use it with .NET apps.
 
 2. Run `AdventureWorksSalesClient\Dotfuscated\Release\AdventureWorksSalesClient.exe`.
 
 3. Trigger one of the two Debugging Checks by having the debugger attached to the process at one of the following points:
 
-  * **"Login" Debugging Check**: When entering and submitting the login confirmation code. The app will then throw exceptions if you try to filter or edit the name data of customer records, even if the debugger is no longer attached at that point.
+    * **"Login" Debugging Check**: When entering and submitting the login confirmation code. The app will then throw exceptions if you try to filter or edit the name data of customer records, even if the debugger is no longer attached at that point.
   
-  * **"Query" Debugging Check**: When opening or reloading data in the Email Address, Phone Number, or Credit Card windows. The app will exit.
+    * **"Query" Debugging Check**: When opening or reloading data in the Email Address, Phone Number, or Credit Card windows. The app will exit.
 
 To test the Tamper Check:
 
@@ -176,7 +176,7 @@ To test the Tamper Check:
 
 2. From the *Tools* menu, select *Dotfuscator Command Prompt*.
 
-  * Note that you may see an error saying Dotfuscator CE command line support requires a registered Dotfuscator CE copy. You can ignore this error for these steps.
+    * Note that you may see an error saying Dotfuscator CE command line support requires a registered Dotfuscator CE copy. You can ignore this error for these steps.
 
 3. Execute the following in the command line, substituting the path in the first command appropriately:
     
@@ -203,16 +203,16 @@ If using Application Insights, to view the incident telemetry after triggering a
 
 5. In the new grid, click *Edit*:
 
-  * For Metrics, under *Usage*, check the *Events* checkbox.
+    * For Metrics, under *Usage*, check the *Events* checkbox.
   
-  * For Group by, select *Event name*.
+    * For Group by, select *Event name*.
 
 6. Events generated by the desktop client will appear in the new grid.
   
-  * **"Login" Debugging Check**: The event name is "Debugger Detected at Login".
+    * **"Login" Debugging Check**: The event name is "Debugger Detected at Login".
   
-  * **"Query" Debugging Check**: The event name is "Debugger Detected when Querying Sensitive Data". Selecting that row will show occurrences of the event in a Search blade; select an occurrence to see details in another blade. Under *Custom Data*, the *Query* key's value will indicate what query (Email Addresses, Phone Numbers, or Credit Cards) was being accessed when the Check detected unauthorized debugging.
+    * **"Query" Debugging Check**: The event name is "Debugger Detected when Querying Sensitive Data". Selecting that row will show occurrences of the event in a Search blade; select an occurrence to see details in another blade. Under *Custom Data*, the *Query* key's value will indicate what query (Email Addresses, Phone Numbers, or Credit Cards) was being accessed when the Check detected unauthorized debugging.
   
-  * **Tamper Check**: The event name is "Tampering Detected".
+    * **Tamper Check**: The event name is "Tampering Detected".
  
-  * Other feature-related events may also appear.
+    * Other feature-related events may also appear.
