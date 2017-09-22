@@ -8,8 +8,6 @@ The solution contains two apps:
 * *AdventureWorksSalesService*: An ASP.NET web service that exposes customer data from the database, and
 * *AdventureWorksSalesClient*: A WPF desktop client that interacts with that web service.
 
-For details, including how this project's protection was configured, see [the corresponding MSDN Magazine article](). **TODO: URL**
-
 ## Prerequisites
 
 The following are prerequisites for using this sample:
@@ -136,6 +134,4 @@ If using Application Insights, to view the incident telemetry after triggering a
   * **"Login" Debugging Check**: The event name is "Debugger Detected at Login".
   * **"Query" Debugging Check**: The event name is "Debugger Detected when Querying Sensitive Data". Selecting that row will show occurrences of the event in a Search blade; select an occurrence to see details in another blade. Under *Custom Data*, the *Query* key's value will indicate what query (Email Addresses, Phone Numbers, or Credit Cards) was being accessed when the Check detected unauthorized debugging.
   * **Tamper Check**: The event name is "Tampering Detected".
-  * Other feature-related events may also appear.
-
-For details on these checks, and how they are configured, see [this MSDN Magazine article](). **TODO: URL**
+ * Other feature-related events may also appear.
