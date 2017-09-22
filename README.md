@@ -13,14 +13,23 @@ The solution contains two apps:
 The following are prerequisites for using this sample:
 
 * Visual Studio 2017
+
 * Microsoft SQL Server or SQL Server Express
+
 * Microsoft SQL Server Management Studio
+
 * The following Windows features:
+
   * Internet Information Services (IIS) for Windows
+
   * ASP.NET 4.7
+
   * WCF HTTP Activation
+
 * Dotfuscator Community Edition (CE) version 5.32 or later. [Get the latest version for Visual Studio 2017 here](https://www.preemptive.com/products/dotfuscator/downloads).
+
 * (*Optional*) An Application Insights resource for the web service
+
 * (*Optional*) An Application Insights resource for the desktop client
 
 ## Running the Sample
