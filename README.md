@@ -141,7 +141,7 @@ To add Runtime Check protection to the desktop client:
 
 5. Browse to and open `AdventureWorksSalesClient\Dotfuscator.xml`.
 
-6. (*Optional*) View the Runtime Checks that Dotfuscator will inject by opening the *Injection* screen and selecting the *Checks* tab. Two Debugging Checks and one Tamper Check will be listed; double-click each for details.
+6. (*Optional*) View the Runtime Checks that Dotfuscator will inject by opening the *Injection* screen and selecting the *Checks* tab. Two Debugging Checks and one Tamper Check will be listed; double-click each to open a new window with details. Close the window after reading those details.
 
 7. Click the *Build* button.
 
@@ -181,10 +181,10 @@ To test the Tamper Check:
 3. Execute the following in the command line, substituting the path in the first command appropriately:
     
     ```
-    cd c:\path\to\project\Dotfuscated\Release  
-    mkdir ..\Tampered  
-    xcopy . ..\Tampered  
-    TamperTester AdventureWorksSalesClient.exe ..\Tampered
+    cd c:\path\to\project\Dotfuscated  
+    mkdir Tampered  
+    xcopy Release Tampered  
+    TamperTester Release\AdventureWorksSalesClient.exe Tampered
     ```
 
 4. Run `AdventureWorksSalesClient\Dotfuscated\Tampered\AdventureWorksSalesClient.exe`.
