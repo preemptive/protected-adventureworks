@@ -1,6 +1,7 @@
 # Dotfuscator Runtime Checks Sample
 
 This is a sample line-of-business solution that demonstrates the use of Runtime Checks, a security feature offered by Dotfuscator Community Edition, which is included with Visual Studio 2017.
+This sample accompanies the article [*Securing Data and Apps from Unauthorized Disclosure and Use*](https://msdn.microsoft.com/en-us/magazine/mt845626) in the November 2017 issue of MSDN Magazine.
 
 The solution is based on the [AdventureWorks2014 OLTP database sample for Microsoft SQL Server](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks2014).
 The solution contains two apps:
