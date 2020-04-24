@@ -1,6 +1,6 @@
 # Dotfuscator Runtime Checks Sample
 
-This is a sample line-of-business solution that demonstrates the use of Runtime Checks, a security feature offered by Dotfuscator Community Edition, which is included with Visual Studio 2017.
+This is a sample line-of-business solution that demonstrates the use of Runtime Checks, a security feature offered by Dotfuscator Community Edition, which is included with Visual Studio 2019.
 This sample accompanies the article [*Securing Data and Apps from Unauthorized Disclosure and Use*](https://msdn.microsoft.com/en-us/magazine/mt845626) in the November 2017 issue of MSDN Magazine.
 
 The solution is based on the [AdventureWorks2014 OLTP database sample for Microsoft SQL Server](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks2014).
@@ -14,13 +14,13 @@ The solution contains two apps:
 
 The following are prerequisites for using this sample:
 
-* Visual Studio 2017
+* Visual Studio 2019
 
 * Microsoft SQL Server or SQL Server Express
 
 * Microsoft SQL Server Management Studio
 
-* The following Windows features:
+* The following Windows features should enabled:
 
     * Internet Information Services (IIS) for Windows
 
@@ -28,7 +28,7 @@ The following are prerequisites for using this sample:
 
     * WCF HTTP Activation
 
-* Dotfuscator Community Edition (CE) version 5.32 or later. [Get the latest version for Visual Studio 2017 here](https://www.preemptive.com/products/dotfuscator/downloads).
+* Dotfuscator Community Edition (CE) version 5.32 or later. [Get the latest version for Visual Studio 2019 here](https://www.preemptive.com/products/dotfuscator/downloads).
 
 * (*Optional*) An Application Insights resource for the web service
 
@@ -38,7 +38,7 @@ The following are prerequisites for using this sample:
 
 To set up the database:
 
-1. Download [the AdventureWorks2014 OLTP database sample](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks2014) as a full database backup (ZIP archive containing a BAK file).
+1. Download [the AdventureWorks2014 OLTP database sample](https://docs.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver15) as a full database backup (ZIP archive containing a BAK file).
 
 2. Extract the BAK file to the `Database` subdirectory of this repository.
 
@@ -74,7 +74,7 @@ To build and deploy the web service:
 
 3. For the Default Web Site, [enable Anonymous Authentication through the Application Pool identity](https://stackoverflow.com/questions/10418669/hosting-asp-net-in-iis7-gives-access-is-denied/16938687#16938687).
 
-4. Run Visual Studio 2017 as an administrator (needed to publish the service to IIS).
+4. Run Visual Studio 2019 as an administrator (needed to publish the service to IIS).
 
 5. Open the `AdventureWorksInternal.sln` solution file and expand the *AdventureWorksSalesService* project node in Solution Explorer.
 
@@ -112,7 +112,7 @@ To build and deploy the web service:
 
 To build and test the desktop client without Runtime Check protection:
 
-1. Run Visual Studio 2017.
+1. Run Visual Studio 2019.
 
 2. Open the `AdventureWorksInternal.sln` solution file and expand the *AdventureWorksSalesClient* project node in Solution Explorer.
 
@@ -134,7 +134,7 @@ To add Runtime Check protection to the desktop client:
 
 1. Build the desktop client as described in the previous section.
 
-2. In Visual Studio 2017, open the *Tools* menu and select *PreEmptive Protection - Dotfuscator*.
+2. In Visual Studio 2019, open the *Tools* menu and select *PreEmptive Protection - Dotfuscator*.
 
 3. If this is your first time running Dotfuscator CE, read and accept the license agreement, and (optionally) register your copy to enable command-line builds.
 
@@ -173,7 +173,7 @@ To test the Debugging Checks:
 
 To test the Tamper Check:
 
-1. Open Dotfuscator CE again (in Visual Studio 2017, open the *Tools* menu and select *PreEmptive Protection - Dotfuscator*).
+1. Open Dotfuscator CE again (in Visual Studio 2019, open the *Tools* menu and select *PreEmptive Protection - Dotfuscator*).
 
 2. From the *Tools* menu, select *Dotfuscator Command Prompt*.
 
